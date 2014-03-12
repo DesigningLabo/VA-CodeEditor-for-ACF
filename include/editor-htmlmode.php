@@ -1,10 +1,10 @@
 <?php
 defined('ABSPATH') or die();
 
-if ( class_exists( 'acf_field' ) AND ! class_exists( 'acf_field_cm_htmlmode' ) ) :
-class acf_field_cm_htmlmode extends acf_field {
+if ( class_exists( 'acf_field' ) AND ! class_exists( 'acf_field_vace_htmlmode' ) ) :
+class acf_field_vace_htmlmode extends acf_field {
 	private $version     = '';
-	private $vacmacf_url = '';
+	private $vaceacf_url = '';
 
 	/*
 	*  __construct
@@ -17,10 +17,10 @@ class acf_field_cm_htmlmode extends acf_field {
 
 	function __construct() {
 		// set data
-		$this->version = VACMACF_VARSION;
-		$this->vacmacf_url = VACMACF_URL;
+		$this->version = VACEACF_VARSION;
+		$this->vaceacf_url = VACEACF_URL;
 		// vars
-		$this->name     = 'va_cm_htmleditor';
+		$this->name     = 'vace_htmleditor';
 		$this->label    = __("Html Editor",'acf');
 		$this->category = __("VisuAlive",'acf');
 		$this->defaults = array(
@@ -84,7 +84,7 @@ class acf_field_cm_htmlmode extends acf_field {
 		$e .= 'foldGutter: true,';
 		$e .= 'gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],';
 		$e .= 'profile: "xhtml",';
-		$e .= 'theme: "' . VACMACF_THEME . '",';
+		$e .= 'theme: "' . VACEACF_THEME . '",';
 		$e .= 'mode: "text/html"';
 		$e .= '});';
 		$e .= '</script>';
@@ -97,27 +97,27 @@ class acf_field_cm_htmlmode extends acf_field {
 	 * admin_enqueue_scripts()
 	 */
 	function admin_enqueue_scripts() {
-		wp_enqueue_style( 'admin-va-codemirror-acf-core', $this->vacmacf_url . '/assets/js/lib/codemirror/codemirror.css', array(), $this->version, 'all' );
-		wp_enqueue_style( 'admin-va-codemirror-acf-theme', $this->vacmacf_url . '/assets/js/lib/codemirror/theme/' . VACMACF_THEME . '.css', array('admin-va-codemirror-acf-core'), $this->version, 'all' );
-		wp_enqueue_style( 'admin-va-codemirror-acf-addon-foldgutter', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/foldgutter.css', array('admin-va-codemirror-acf-theme'), $this->version, 'all' );
-		wp_enqueue_style( 'admin-va-codemirror-acf-addon-hint', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/hint/show-hint.css', array('admin-va-codemirror-acf-theme'), $this->version, 'all' );
+		wp_enqueue_style( 'admin-va-codeeditor-acf-core', $this->vaceacf_url . '/assets/js/lib/codemirror/codemirror.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'admin-va-codeeditor-acf-theme', $this->vaceacf_url . '/assets/js/lib/codemirror/theme/' . VACEACF_THEME . '.css', array('admin-va-codeeditor-acf-core'), $this->version, 'all' );
+		wp_enqueue_style( 'admin-va-codeeditor-acf-addon-foldgutter', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/foldgutter.css', array('admin-va-codeeditor-acf-theme'), $this->version, 'all' );
+		wp_enqueue_style( 'admin-va-codeeditor-acf-addon-hint', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/hint/show-hint.css', array('admin-va-codeeditor-acf-theme'), $this->version, 'all' );
 
-		wp_enqueue_script( 'admin-va-codemirror-acf-core', $this->vacmacf_url . '/assets/js/lib/codemirror/codemirror.min.js', array('jquery'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-core', $this->vaceacf_url . '/assets/js/lib/codemirror/codemirror.min.js', array('jquery'), $this->version, false );
 
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-activeline', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/selection/active-line.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-matchbrackets', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/edit/matchbrackets.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-closebrackets', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/edit/closebrackets.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-emmet', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/edit/emmet.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-activeline', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/selection/active-line.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-matchbrackets', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/edit/matchbrackets.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-closebrackets', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/edit/closebrackets.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-emmet', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/edit/emmet.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
 
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-foldcode', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/foldcode.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-foldgutter', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/foldgutter.min.js', array('admin-va-codemirror-acf-addon-foldcode'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-brace-fold', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/brace-fold.min.js', array('admin-va-codemirror-acf-addon-foldcode'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-xml-fold', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/xml-fold.min.js', array('admin-va-codemirror-acf-addon-foldcode'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-comment-fold', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/fold/comment-fold.min.js', array('admin-va-codemirror-acf-addon-foldcode'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-foldcode', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/foldcode.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-foldgutter', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/foldgutter.min.js', array('admin-va-codeeditor-acf-addon-foldcode'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-brace-fold', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/brace-fold.min.js', array('admin-va-codeeditor-acf-addon-foldcode'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-xml-fold', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/xml-fold.min.js', array('admin-va-codeeditor-acf-addon-foldcode'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-comment-fold', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/fold/comment-fold.min.js', array('admin-va-codeeditor-acf-addon-foldcode'), $this->version, false );
 
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-hint', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/hint/show-hint.min.js', array('admin-va-codemirror-acf-core'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-addon-htmlhint', $this->vacmacf_url . '/assets/js/lib/codemirror/addon/hint/html-hint.min.js', array('admin-va-codemirror-acf-addon-hint'), $this->version, false );
-		wp_enqueue_script( 'admin-va-codemirror-acf-mode-xml', $this->vacmacf_url . '/assets/js/lib/codemirror/mode/xml.min.js', array('admin-va-codemirror-acf-addon-jshint'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-hint', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/hint/show-hint.min.js', array('admin-va-codeeditor-acf-core'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-addon-htmlhint', $this->vaceacf_url . '/assets/js/lib/codemirror/addon/hint/html-hint.min.js', array('admin-va-codeeditor-acf-addon-hint'), $this->version, false );
+		wp_enqueue_script( 'admin-va-codeeditor-acf-mode-xml', $this->vaceacf_url . '/assets/js/lib/codemirror/mode/xml.min.js', array('admin-va-codeeditor-acf-addon-jshint'), $this->version, false );
 	}
 
 	/*
@@ -246,5 +246,5 @@ class acf_field_cm_htmlmode extends acf_field {
 	}
 }
 
-new acf_field_cm_htmlmode();
+new acf_field_vace_htmlmode();
 endif;
