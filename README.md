@@ -1,8 +1,12 @@
-# VA CodeMirror for ACF
+# VA CodeEditor for ACF
 
 これは、WordPressのプラグイン Advanced Custom fieldsのadd-onです。
 
-このプラグインをWordPressにインストールし有効化すると、4種類のソースコードエディターを追加できるようになります。
+このプラグインをWordPressにインストールし有効化すると、
+
+4種類のソースコードエディターを追加できるようになります。
+
+使用ライブラリとして、CodeMirror、Emmetを使用しています。
 
 ## インストール方法
 
@@ -11,6 +15,8 @@
 ## カスタマイズ
 
 ## ご注意
+
+* Advanced Custom fieldsをインストール・有効化後に、VA CodeEditor for ACFを有効化してください。
 
 ## おねがい
 
